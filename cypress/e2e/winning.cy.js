@@ -21,6 +21,19 @@ describe('Winning Automation Exercise', () => {
     cy.get('[data-test="product_sort_container"]')
     .select('Price (low to high)')
     // Validate price filter (low to high)
+    cy.get('.inventory_item').then(($items) => {
+      let prices = []
+      $items.each(function(i, item) {
+        cy.wrap(item).find('.inventory_item_price').then(($price) => {
+          prices.push(parseFloat($price.text().replace('$', '')))
+        })
+      })
+      cy.wrap(prices).should((prices) => {
+        for (let i = 0; i < prices.length - 1; i++) {
+          expect(prices[i]).to.be.at.most(prices[i + 1])
+        }
+      })
+    })
 
     // Filter products by price (high to low)
 
