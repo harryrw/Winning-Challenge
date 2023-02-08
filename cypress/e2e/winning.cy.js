@@ -38,7 +38,19 @@ describe('Winning Automation Exercise', () => {
     cy.get('[data-test="product_sort_container"]')
     .select('Price (high to low)')
     // Validate price filter (high to low)
-
+    cy.get('.inventory_item').then(($items) => {
+      let prices = []
+      $items.each(function(i, item) {
+        cy.wrap(item).find('.inventory_item_price').then(($price) => {
+          prices.push(parseFloat($price.text().replace('$', '')))
+        })
+      })
+      cy.wrap(prices).should((prices) => {
+        for (let i = 0; i < prices.length - 1; i++) {
+          expect(prices[i]).to.be.at.least(prices[i + 1])
+        }
+      })
+    })
     // Add product to cart
 
     // Validate product in cart
