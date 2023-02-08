@@ -52,7 +52,8 @@ describe('Winning Automation Exercise', () => {
       })
     })
     // Add product to cart
-
+    cy.get('[data-test="add-to-cart-sauce-labs-fleece-jacket"]')
+    .click()
     // Validate product in cart
 
   })
