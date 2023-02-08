@@ -55,6 +55,9 @@ describe('Winning Automation Exercise', () => {
     cy.get('[data-test="add-to-cart-sauce-labs-fleece-jacket"]')
     .click()
     // Validate product in cart
-
+    cy.get('.shopping_cart_link')
+    .click()
+    cy.get('[data-test="remove-sauce-labs-fleece-jacket"]')
+    .should('be.visible')
   })
 })
