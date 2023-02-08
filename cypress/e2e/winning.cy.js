@@ -34,9 +34,9 @@ describe('Winning Automation Exercise', () => {
         }
       })
     })
-
     // Filter products by price (high to low)
-
+    cy.get('[data-test="product_sort_container"]')
+    .select('Price (high to low)')
     // Validate price filter (high to low)
 
     // Add product to cart
