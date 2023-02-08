@@ -15,5 +15,20 @@ describe('Winning Automation Exercise', () => {
     .click()
     cy.get('#logout_sidebar_link')
     .should('be.visible')
+    cy.get('#react-burger-cross-btn')
+    .click()
+    // Filter products by price (low to high)
+    cy.get('[data-test="product_sort_container"]')
+    .select('Price (low to high)')
+    // Validate price filter (low to high)
+
+    // Filter products by price (high to low)
+
+    // Validate price filter (high to low)
+
+    // Add product to cart
+
+    // Validate product in cart
+
   })
 })
